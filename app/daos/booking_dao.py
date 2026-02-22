@@ -7,7 +7,7 @@ def get_booking(db: Session, booking_id: str) -> Optional[Booking]:
     return db.query(Booking).filter(Booking.id == booking_id).first()
 
 def create_booking(db: Session, booking: Booking) -> Booking:
-    db.add(Booking)
+    db.add(booking)
     db.commit()
     db.refresh(booking)
     return booking

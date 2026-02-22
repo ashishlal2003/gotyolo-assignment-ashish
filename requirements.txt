@@ -3,4 +3,4 @@ fastapi
 sqlalchemy
 python-dotenv
 requests
-apscheduler
+APScheduler
