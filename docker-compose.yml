@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./gotyolo.db:/app/gotyolo.db
+    environment:
+      - DATABASE_URL=sqlite:///./gotyolo.db
