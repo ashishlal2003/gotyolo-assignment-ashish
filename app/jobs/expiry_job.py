@@ -1,5 +1,6 @@
 from app.database import SessionLocal
 from app.daos import booking_dao, trip_dao
+from app.models.booking import BookingState
 
 
 def expire_pending_bookings():
@@ -8,7 +9,7 @@ def expire_pending_bookings():
         expired = booking_dao.get_expired_pending_bookings(db)
         for booking in expired:
             trip_dao.increment_seats(db, booking.trip_id, booking.num_seats)
-            booking.state = "EXPIRED"
+            booking.state = BookingState.EXPIRED
         if expired:
             db.commit()
             print(f"[expiry_job] Expired {len(expired)} booking(s)")

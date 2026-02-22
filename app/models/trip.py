@@ -23,5 +23,5 @@ class Trip(Base):
     status = Column(SAEnum(TripStatus), nullable=False, default=TripStatus.DRAFT)
     refundable_until_days_before = Column(Integer, nullable=False, default=7)
     cancellation_fee_percent = Column(Integer, nullable=False, default=10)
-    created_at = Column(DateTime, nullable=False, default=datetime.now(timezone.utc))
-    updated_at = Column(DateTime, nullable=False, default=datetime.now(timezone.utc))
+    created_at = Column(DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
